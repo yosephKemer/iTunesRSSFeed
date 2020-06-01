@@ -23,9 +23,10 @@ class MainViewModel {
     var model : RSSModel?
     weak var delegate: ITunesViewModelDelegate?
     
-    func fetchRSS() {
+    func fetchRSS(_ feedType: FeedType.RawValue) {
         
-        let rssUrl = "https://rss.itunes.apple.com/api/v1/us/apple-music/coming-soon/all/100/explicit.json"
+        let rssUrl = "https://rss.itunes.apple.com/api/v1/us/apple-music/\(feedType)/all/100/explicit.json"
+        print(rssUrl)
         delegate?.showLoadingIndicator()
         NetworkManager.shared.fetchData(url: rssUrl) { [weak self](results) in
             self?.delegate?.hideLoadingIndicator()
@@ -33,6 +34,7 @@ class MainViewModel {
                 
             case .success(let rssResult):
                 self?.model = rssResult
+                
                 print("rssResult22222", rssResult)
                 
             case .failure(_):

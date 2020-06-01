@@ -34,7 +34,7 @@ struct Author: Codable {
 struct Link: Codable {
     let linkSelf: String?
     let alternate: String?
-    
+
     enum CodingKeys: String, CodingKey {
         case linkSelf = "self"
         case alternate
@@ -45,7 +45,7 @@ struct Link: Codable {
 struct ResultFeed: Codable {
     let artistName: String?
     let id: String
-    let releaseDate: String
+    let releaseDate: String?
     let name: String?
     let kind: Kind?
     let copyright, artistID: String?
@@ -54,7 +54,7 @@ struct ResultFeed: Codable {
     let genres: [Genre]?
     let url: String
     let contentAdvisoryRating: String?
-    
+
     enum CodingKeys: String, CodingKey {
         case artistName, id, releaseDate, name, kind, copyright
         case artistID = "artistId"
@@ -67,7 +67,7 @@ struct ResultFeed: Codable {
 struct Genre: Codable {
     let genreID, name: String?
     let url: String?
-    
+
     enum CodingKeys: String, CodingKey {
         case genreID = "genreId"
         case name, url

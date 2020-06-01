@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C37FDE87248554BF00959A85 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37FDE86248554BE00959A85 /* Extensions.swift */; };
+		C37FDE89248582E400959A85 /* FeedType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37FDE88248582E400959A85 /* FeedType.swift */; };
 		C3F1BEC42480415A0051E2DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F1BEC32480415A0051E2DD /* AppDelegate.swift */; };
 		C3F1BEC62480415A0051E2DD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F1BEC52480415A0051E2DD /* SceneDelegate.swift */; };
 		C3F1BECD2480415B0051E2DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3F1BECC2480415B0051E2DD /* Assets.xcassets */; };
@@ -43,6 +44,7 @@
 
 /* Begin PBXFileReference section */
 		C37FDE86248554BE00959A85 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		C37FDE88248582E400959A85 /* FeedType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedType.swift; sourceTree = "<group>"; };
 		C3F1BEC02480415A0051E2DD /* iTunes_RSS Feed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iTunes_RSS Feed.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3F1BEC32480415A0051E2DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C3F1BEC52480415A0051E2DD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				C3F1BF00248042AA0051E2DD /* RSSModel.swift */,
+				C37FDE88248582E400959A85 /* FeedType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				C3F1BEC62480415A0051E2DD /* SceneDelegate.swift in Sources */,
 				C37FDE87248554BF00959A85 /* Extensions.swift in Sources */,
 				C3F1BF03248042D30051E2DD /* ITunesViewModelDelegate.swift in Sources */,
+				C37FDE89248582E400959A85 /* FeedType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

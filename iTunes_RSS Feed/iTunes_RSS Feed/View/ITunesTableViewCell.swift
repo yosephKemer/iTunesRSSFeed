@@ -41,7 +41,6 @@ class ITunesTableViewCell: UITableViewCell {
         return lbl
     }()
     
-    
     // MARK: Cell Delegate Methods
 
     
