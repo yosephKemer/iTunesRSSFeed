@@ -12,21 +12,16 @@ class ITunesViewController: UIViewController {
     
     private let tableView = UITableView()
     var activityView: UIActivityIndicatorView?
-    var safeArea: UILayoutGuide!
     var imageLoader = ImageLoader()
-    
-    
     var dashBoardViewModel = MainViewModel()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-        safeArea = view.layoutMarginsGuide
+        view.backgroundColor = .black
         setupTableView()
         dashBoardViewModel.delegate = self
         dashBoardViewModel.fetchRSS()
-        self.title = "ITunes RSS Feed"
         
     }
     
@@ -39,15 +34,18 @@ class ITunesViewController: UIViewController {
     func setupTableView() {
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.topAnchor.constraint(equalTo: safeArea.topAnchor).isActive = true
+        tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        tableView.backgroundColor = .black
+        tableView.register(ITunesTableViewCell.self, forCellReuseIdentifier: "ITunesTableViewCell")
+        
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.separatorColor = UIColor.clear
-        tableView.backgroundColor = UIColor.white
-        tableView.register(ITunesTableViewCell.self, forCellReuseIdentifier: "DashboardTableViewCell")
+        
+        navigationItem.title = "Coming Soon"
+        
     }
     
     func showAlert(title: String, message: String) {
@@ -84,7 +82,7 @@ extension ITunesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "DashboardTableViewCell", for: indexPath) as? ITunesTableViewCell else {fatalError("Unabel to create cell")}
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ITunesTableViewCell", for: indexPath) as? ITunesTableViewCell else {fatalError("Unabel to create cell")}
         if let results = dashBoardViewModel.model?.feed.results {
             let result = results[indexPath.row]
             imageLoader.obtainImageWithPath(imageName: result.name ?? "", imageURL: result.artworkUrl100 ) { (image) in
@@ -99,7 +97,7 @@ extension ITunesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
+        return 60
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let viewModel = DetailViewModel()

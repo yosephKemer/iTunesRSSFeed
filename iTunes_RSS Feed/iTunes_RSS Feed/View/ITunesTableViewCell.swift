@@ -11,57 +11,44 @@ import UIKit
 
 class ITunesTableViewCell: UITableViewCell {
     
-    let  backView: UIView = {
-        let view = UIView(frame: CGRect(x: 4, y: 6, width: UIScreen.main.bounds.size.width - 8, height: 110))
-        view.backgroundColor = #colorLiteral(red: 0.2285108566, green: 0.546705544, blue: 0.845690906, alpha: 1)
-        return view
-    }()
     
     let albumImage: UIImageView = {
-        let userImage = UIImageView(frame: CGRect(x: 4, y: 4, width: 104, height: 104))
+        let userImage = UIImageView()
+        userImage.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        userImage.heightAnchor.constraint(equalToConstant: 50).isActive = true
         userImage.contentMode = .scaleAspectFill
+        userImage.clipsToBounds = true
+        userImage.layer.borderWidth = 1
+        userImage.layer.borderColor = UIColor.red.cgColor
         return userImage
     }()
     
     lazy var albumNamelbl: UILabel = {
-        let lbl = UILabel(frame: CGRect(x: 116, y: 8, width: backView.frame.width - 116, height: 30))
+        let lbl = UILabel()
         lbl.textAlignment = .left
-        lbl.font = UIFont.boldSystemFont(ofSize: 18)
-        lbl.numberOfLines = 2
-        lbl.textColor = UIColor.white
+        lbl.font = UIFont.boldSystemFont(ofSize: 13)
+        lbl.numberOfLines = 0
+        lbl.textColor = .white
         return lbl
     }()
     
     lazy var artistNamelbl: UILabel = {
-        let lbl = UILabel(frame: CGRect(x: 116, y: 42, width: backView.frame.width - 116, height: 30))
+        let lbl = UILabel()
         lbl.textAlignment = .left
-        lbl.numberOfLines = 2
-        lbl.textColor = UIColor.white
+        lbl.font = .systemFont(ofSize: 12)
+        lbl.numberOfLines = 0
+        lbl.textColor = .gray
         return lbl
     }()
     
     
     // MARK: Cell Delegate Methods
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        addSubview(backView)
-        backView.addSubview(albumImage)
-        backView.addSubview(albumNamelbl)
-        backView.addSubview(artistNamelbl)
-        self.backgroundColor = UIColor.white
-    }
+
     
     override func layoutSubviews() {
-        backgroundColor = UIColor.clear
-        backView.layer.cornerRadius = 5
-        backView.clipsToBounds = true
-        albumImage.layer.cornerRadius = 52
-        albumImage.clipsToBounds = true
+        backgroundColor = .clear
+        albumImage.layer.cornerRadius = CGFloat(roundf(Float(albumImage.frame.size.width/2.0)))
+        albumImage.layer.masksToBounds = true
     }
     
     
@@ -75,6 +62,44 @@ class ITunesTableViewCell: UITableViewCell {
                 albumNamelbl.text = name
             }
         }
+    }
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        selectionStyle = .none
+        let labelStackView = VerticalStackView(arrangedSubviews: [albumNamelbl, artistNamelbl], spacing: 5)
+        
+        let stackView = UIStackView(arrangedSubviews: [albumImage,
+                                                       labelStackView])
+        
+        stackView.spacing = 12
+        stackView.alignment = .center
+        addSubview(stackView)
+        stackView.fillSuperview(padding: .init(top: 2, left: 30, bottom: 2, right: 10))
+        
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
+    
+}
+
+class VerticalStackView: UIStackView {
+    
+    init(arrangedSubviews: [UIView], spacing: CGFloat = 0) {
+        super.init(frame: .zero)
+        
+        arrangedSubviews.forEach({addArrangedSubview($0)})
+        
+        self.spacing = spacing
+        self.axis = .vertical
+    }
+    
+    required init(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
 }

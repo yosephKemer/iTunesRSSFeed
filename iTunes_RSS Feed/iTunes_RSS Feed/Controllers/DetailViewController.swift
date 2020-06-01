@@ -10,27 +10,18 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
-    let albumView : UIView = {
-        let cv = UIView()
-        cv.backgroundColor = .white
-        cv.layer.cornerRadius = 15
-        cv.translatesAutoresizingMaskIntoConstraints = false
-        cv.alpha = 0.5
-        return cv
-    }()
+    var dashboardDetailModel = DetailViewModel()
     
     let albumImageView: UIImageView = {
-        let civ = UIImageView()
-        civ.tintColor = UIColor.white
-        civ.contentMode = .scaleToFill
-        civ.layer.cornerRadius = 75
-        civ.translatesAutoresizingMaskIntoConstraints = false
-        return civ
+        let image = UIImageView()
+        image.contentMode = .scaleToFill
+        image.layer.cornerRadius = 75
+        return image
     }()
     
     let albumNamelabel: UILabel = {
         let cl = UILabel()
-        cl.textColor = .darkGray
+        cl.textColor = .white
         cl.numberOfLines = 0
         cl.textAlignment = .center
         cl.font = UIFont.systemFont(ofSize: 20)
@@ -40,7 +31,7 @@ class DetailViewController: UIViewController {
     
     let artistNameLabel: UILabel = {
         let cl = UILabel()
-        cl.textColor = .darkGray
+        cl.textColor = .gray
         cl.font = UIFont.systemFont(ofSize: 15)
         cl.translatesAutoresizingMaskIntoConstraints = false
         cl.textAlignment = .center
@@ -52,9 +43,9 @@ class DetailViewController: UIViewController {
     
     let releaseDateLabel: UILabel = {
         let cl = UILabel()
-        cl.textColor = .darkGray
+        cl.textColor = .red
         cl.numberOfLines = 0
-        cl.textAlignment = .center
+       // cl.textAlignment = .center
         cl.font = UIFont.systemFont(ofSize: 15)
         cl.translatesAutoresizingMaskIntoConstraints = false
         return cl
@@ -65,7 +56,7 @@ class DetailViewController: UIViewController {
         cl.textColor = .darkGray
         cl.font = UIFont.systemFont(ofSize: 15)
         cl.translatesAutoresizingMaskIntoConstraints = false
-        cl.textAlignment = .center
+       // cl.textAlignment = .center
         cl.numberOfLines = 0
         cl.lineBreakMode = .byWordWrapping
         cl.sizeToFit()
@@ -77,7 +68,7 @@ class DetailViewController: UIViewController {
         cl.textColor = .darkGray
         cl.font = UIFont.systemFont(ofSize: 15)
         cl.translatesAutoresizingMaskIntoConstraints = false
-        cl.textAlignment = .center
+       // cl.textAlignment = .center
         cl.numberOfLines = 0
         cl.lineBreakMode = .byWordWrapping
         cl.sizeToFit()
@@ -87,25 +78,23 @@ class DetailViewController: UIViewController {
     let okButton: UIButton = {
         let button = UIButton()
         button.setTitle("Back to Home", for: .normal)
-        button.backgroundColor = #colorLiteral(red: 0.07164370269, green: 0.3993143439, blue: 0.9998579621, alpha: 1)
+        button.backgroundColor = .brown
         button.setTitleColor(.white , for: .normal)
         button.layer.cornerRadius = 10
         button.clipsToBounds = true
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.borderWidth = 2
-        button.layer.borderColor = UIColor.white.cgColor
+        button.layer.borderColor = UIColor.red.cgColor
         button.addTarget(self, action: #selector(okAction), for: .touchUpInside)
         return button
     }()
-    
-    
-    var dashboardDetailModel = DetailViewModel()
     
     // MARK: Initializer
     
     init(dashboardDetailModel: DetailViewModel) {
         self.dashboardDetailModel = dashboardDetailModel
         super.init(nibName: nil, bundle: nil)
+        
     }
     
     required init?(coder: NSCoder) {
@@ -116,7 +105,7 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .black
         dashboardDetailModel.delegate = self
         setupView()
         setupConstraints()
@@ -154,7 +143,7 @@ class DetailViewController: UIViewController {
     
     
     func setupView() {
-        view.addSubview(albumView)
+        // view.addSubview(albumView)
         view.addSubview(albumImageView)
         view.addSubview(albumNamelabel)
         view.addSubview(artistNameLabel)
@@ -167,53 +156,51 @@ class DetailViewController: UIViewController {
     func setupConstraints() {
         setupImageView()
         setupAlbumArtist()
-        setupReleaseDate()
+        setupArtistName()
         setupGeneralLabel()
         setupCopyRightLabel()
         setupBtn()
     }
     
     func setupImageView(){
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":albumView]))
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":albumView]))
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-20-[v0(250)]", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":albumImageView]))
-        albumImageView.widthAnchor.constraint(equalToConstant: 250).isActive = true
-        albumImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        let safeArea = view.safeAreaLayoutGuide
+        albumImageView.translatesAutoresizingMaskIntoConstraints = false
+        albumImageView.topAnchor.constraint(equalTo: safeArea.topAnchor).isActive = true
+        albumImageView.heightAnchor.constraint(equalToConstant: view.frame.height / 2).isActive = true
+        albumImageView.widthAnchor.constraint(equalToConstant: view.frame.width ).isActive = true
+        
     }
+    
     
     func setupAlbumArtist() {
         albumNamelabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        albumNamelabel.centerYAnchor.constraint(equalTo: view.centerYAnchor,constant: -50).isActive = true
-        albumNamelabel.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        artistNameLabel.leftAnchor.constraint(equalTo: albumView.leftAnchor,constant: 20).isActive = true
+        albumNamelabel.topAnchor.constraint(equalTo: albumImageView.bottomAnchor, constant:  20).isActive = true
         
-        artistNameLabel.rightAnchor.constraint(equalTo: albumView.rightAnchor,constant: -20).isActive = true
-        artistNameLabel.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        artistNameLabel.topAnchor.constraint(equalTo: albumNamelabel.topAnchor, constant: 50).isActive = true
     }
-    func setupReleaseDate() {
-        releaseDateLabel.leftAnchor.constraint(equalTo: albumView.leftAnchor,constant: 20).isActive = true
-        releaseDateLabel.rightAnchor.constraint(equalTo: albumView.rightAnchor,constant: -20).isActive = true
-        releaseDateLabel.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        releaseDateLabel.topAnchor.constraint(equalTo: artistNameLabel.topAnchor, constant: 50).isActive = true
+    func setupArtistName() {
+        artistNameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        artistNameLabel.topAnchor.constraint(equalTo: albumNamelabel.bottomAnchor, constant: 20).isActive = true
     }
     
     func setupGeneralLabel() {
-        genereLabel.leftAnchor.constraint(equalTo: albumView.leftAnchor,constant: 20).isActive = true
-        genereLabel.rightAnchor.constraint(equalTo: albumView.rightAnchor,constant: -20).isActive = true
-        genereLabel.topAnchor.constraint(equalTo: releaseDateLabel.topAnchor, constant: 50).isActive = true
+        genereLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        genereLabel.topAnchor.constraint(equalTo: artistNameLabel.bottomAnchor, constant: 20).isActive = true
     }
     
     func setupCopyRightLabel() {
-        copyRightLabel.leftAnchor.constraint(equalTo: albumView.leftAnchor,constant: 20).isActive = true
-        copyRightLabel.rightAnchor.constraint(equalTo: albumView.rightAnchor,constant: -20).isActive = true
-        copyRightLabel.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        copyRightLabel.topAnchor.constraint(equalTo: genereLabel.topAnchor, constant: 50).isActive = true
+        copyRightLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        copyRightLabel.topAnchor.constraint(equalTo: genereLabel.bottomAnchor, constant: 35).isActive = true
     }
     
     func setupBtn() {
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v0]-20-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":okButton]))
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[v0(60)]-20-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":okButton]))
+        let safeArea = view.safeAreaLayoutGuide
+        okButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        okButton.heightAnchor.constraint(equalTo: okButton.heightAnchor, constant: 40).isActive = true
+        okButton.widthAnchor.constraint(equalToConstant: view.frame.width - 40).isActive = true
+        okButton.trailingAnchor.constraint(equalTo: okButton.trailingAnchor, constant: -20).isActive = true
+        okButton.leadingAnchor.constraint(equalTo: okButton.leadingAnchor, constant: 20).isActive = true
+        okButton.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -20).isActive = true
+        
     }
     
     @objc func okAction() {
@@ -226,3 +213,4 @@ extension DetailViewController: DetailViewModelProtocol {
         updateUI()
     }
 }
+

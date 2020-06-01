@@ -17,7 +17,7 @@ class ImageLoader {
     
     init() {
         session = URLSession.shared
-        //task = URLSessionDownloadTask()
+       //task = URLSessionDownloadTask()
         self.cache = NSCache()
     }
     

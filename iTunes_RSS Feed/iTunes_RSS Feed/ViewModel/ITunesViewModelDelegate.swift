@@ -27,41 +27,19 @@ class MainViewModel {
         
         let rssUrl = "https://rss.itunes.apple.com/api/v1/us/apple-music/coming-soon/all/100/explicit.json"
         delegate?.showLoadingIndicator()
-        NetworkManager.sharedInstance.apiRequest(url: rssUrl) { [weak self](success, response, errorMessage) in
-            
-            if success {
-                self?.delegate?.hideLoadingIndicator()
-                if let responseData = response as? Data {
-                    do {
-                        let decoder = JSONDecoder()
-                        let model = try decoder.decode(RSSModel.self, from: responseData)
-                        self?.model = model
-                        self?.delegate?.fetchRssCallBack(status: true, message: "")
-                        return
-                        
-                    } catch {
-                        print(error.localizedDescription)
-                        self?.delegate?.fetchRssCallBack(status: false, message: "Something went wrong")
-                        return
-                    }
-                }
+        NetworkManager.shared.fetchData(url: rssUrl) { [weak self](results) in
+            self?.delegate?.hideLoadingIndicator()
+            switch results {
+                
+            case .success(let rssResult):
+                self?.model = rssResult
+                print("rssResult22222", rssResult)
+                
+            case .failure(_):
+                print("Errror was here")
             }
             
-            self?.delegate?.fetchRssCallBack(status: true, message: errorMessage ?? "")
+            self?.delegate?.fetchRssCallBack(status: true, message: "Error ...")
         }
-        
-        
-        //        NetworkManager2.shared.iTunesFetch { (results) in
-        //            switch results {
-        //            case .success(let newResult):
-        //                self.model = newResult
-        //                self.delegate?.fetchRssCallBack(status: true, message: "")
-        //                print("feedResults....", self.feedResults!)
-        //            case .failure(_):
-        //                print("Error.... in feedResults")
-        //            }
-        //
-        //        }
-        
     }
 }

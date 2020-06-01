@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C37FDE87248554BF00959A85 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37FDE86248554BE00959A85 /* Extensions.swift */; };
 		C3F1BEC42480415A0051E2DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F1BEC32480415A0051E2DD /* AppDelegate.swift */; };
 		C3F1BEC62480415A0051E2DD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F1BEC52480415A0051E2DD /* SceneDelegate.swift */; };
-		C3F1BEC82480415A0051E2DD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F1BEC72480415A0051E2DD /* ViewController.swift */; };
 		C3F1BECD2480415B0051E2DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3F1BECC2480415B0051E2DD /* Assets.xcassets */; };
 		C3F1BED02480415B0051E2DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3F1BECE2480415B0051E2DD /* LaunchScreen.storyboard */; };
 		C3F1BEDB2480415B0051E2DD /* iTunes_RSS_FeedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F1BEDA2480415B0051E2DD /* iTunes_RSS_FeedTests.swift */; };
@@ -42,10 +42,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C37FDE86248554BE00959A85 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		C3F1BEC02480415A0051E2DD /* iTunes_RSS Feed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iTunes_RSS Feed.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3F1BEC32480415A0051E2DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C3F1BEC52480415A0051E2DD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C3F1BEC72480415A0051E2DD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C3F1BECC2480415B0051E2DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C3F1BECF2480415B0051E2DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C3F1BED12480415B0051E2DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -119,7 +119,6 @@
 				C3F1BEF7248041950051E2DD /* Model */,
 				C3F1BEF82480419C0051E2DD /* ViewModel */,
 				C3F1BEF9248041A70051E2DD /* Networking */,
-				C3F1BEC72480415A0051E2DD /* ViewController.swift */,
 				C3F1BECC2480415B0051E2DD /* Assets.xcassets */,
 				C3F1BECE2480415B0051E2DD /* LaunchScreen.storyboard */,
 				C3F1BED12480415B0051E2DD /* Info.plist */,
@@ -192,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				C3F1BF06248043240051E2DD /* NetworkManager.swift */,
+				C37FDE86248554BE00959A85 /* Extensions.swift */,
 				C3F1BF082480433B0051E2DD /* ImageLoader.swift */,
 			);
 			path = Networking;
@@ -331,12 +331,12 @@
 				C3F1BEFF248042900051E2DD /* ITunesTableViewCell.swift in Sources */,
 				C3F1BF07248043240051E2DD /* NetworkManager.swift in Sources */,
 				C3F1BF05248042FE0051E2DD /* DetailViewModelProtocol.swift in Sources */,
-				C3F1BEC82480415A0051E2DD /* ViewController.swift in Sources */,
 				C3F1BF092480433B0051E2DD /* ImageLoader.swift in Sources */,
 				C3F1BEFD2480424B0051E2DD /* DetailViewController.swift in Sources */,
 				C3F1BEC42480415A0051E2DD /* AppDelegate.swift in Sources */,
 				C3F1BF01248042AA0051E2DD /* RSSModel.swift in Sources */,
 				C3F1BEC62480415A0051E2DD /* SceneDelegate.swift in Sources */,
+				C37FDE87248554BF00959A85 /* Extensions.swift in Sources */,
 				C3F1BF03248042D30051E2DD /* ITunesViewModelDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

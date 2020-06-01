@@ -28,14 +28,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.windowScene = windowScene
         window?.rootViewController = navController
         window?.makeKeyAndVisible()
-        
-        
-//        guard let windowScene = (scene as? UIWindowScene) else { return }
-//        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
-//        window?.makeKeyAndVisible()
-//        window?.windowScene = windowScene
-//
-//        window?.rootViewController = UINavigationController(rootViewController: ITunesViewController())
+
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {
