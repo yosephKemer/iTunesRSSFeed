@@ -29,6 +29,7 @@ class ITunesViewController: UIViewController {
     
     private func updateUI(){
         tableView.reloadData()
+        setupNavigationBar()
     }
     
     func setupTableView() {
@@ -44,7 +45,13 @@ class ITunesViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        navigationItem.title = "Coming Soon"
+        
+    }
+    
+    func setupNavigationBar() {
+        navigationItem.title = "Coming Soon Music"
+        navigationController?.navigationBar.tintColor = .gray
+        navigationController?.navigationBar.prefersLargeTitles = true
         
     }
     
