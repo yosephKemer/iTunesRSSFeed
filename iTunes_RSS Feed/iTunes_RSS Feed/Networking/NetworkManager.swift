@@ -36,7 +36,7 @@ class NetworkManager {
             do {
                 let decoder = JSONDecoder()
                 let rssResponse = try decoder.decode(RSSModel.self, from: data)
-                // print(rssResponse)
+           
                 completion(.success(rssResponse))
             } catch let jsonErr {
                 print("Failed to decode json:", jsonErr)

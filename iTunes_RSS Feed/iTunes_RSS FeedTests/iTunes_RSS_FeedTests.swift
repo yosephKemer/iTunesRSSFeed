@@ -28,7 +28,7 @@ class iTunes_RSS_FeedTests: XCTestCase {
     func testGetPhotos() {
         dashboardViewModel.delegate = self
         expectation = self.expectation(description: "Get RSS")
-        dashboardViewModel.fetchRSS()
+        dashboardViewModel.fetchRSS(FeedType.comingSoon.rawValue)
         self.waitForExpectations(timeout: 50, handler: nil)
         
     }

@@ -121,6 +121,7 @@
 				C3F1BEF7248041950051E2DD /* Model */,
 				C3F1BEF82480419C0051E2DD /* ViewModel */,
 				C3F1BEF9248041A70051E2DD /* Networking */,
+				C37FDE86248554BE00959A85 /* Extensions.swift */,
 				C3F1BECC2480415B0051E2DD /* Assets.xcassets */,
 				C3F1BECE2480415B0051E2DD /* LaunchScreen.storyboard */,
 				C3F1BED12480415B0051E2DD /* Info.plist */,
@@ -194,7 +195,6 @@
 			isa = PBXGroup;
 			children = (
 				C3F1BF06248043240051E2DD /* NetworkManager.swift */,
-				C37FDE86248554BE00959A85 /* Extensions.swift */,
 				C3F1BF082480433B0051E2DD /* ImageLoader.swift */,
 			);
 			path = Networking;

@@ -35,7 +35,7 @@ class MainViewModel {
             case .success(let rssResult):
                 self?.model = rssResult
                 
-                print("rssResult22222", rssResult)
+            //    print("rssResult22222", rssResult)
                 
             case .failure(_):
                 print("Errror was here")

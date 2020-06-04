@@ -12,5 +12,4 @@ enum FeedType: String, Codable {
     case comingSoon = "coming-soon"
     case newReleases = "new-releases"
     case topAlbums = "top-albums"
-    
 }

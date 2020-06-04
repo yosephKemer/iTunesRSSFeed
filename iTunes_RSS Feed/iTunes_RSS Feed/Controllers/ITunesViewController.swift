@@ -51,7 +51,6 @@ class ITunesViewController: UIViewController {
     
     func setupNavigationBar() {
         
-        self.title = "iTunes Coming Soon"
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = UIColor.systemRed
@@ -72,6 +71,7 @@ class ITunesViewController: UIViewController {
         activityView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
         guard let activityView = activityView else {return}
         activityView.center = self.view.center
+        activityView.color = .blue
         self.view.addSubview(activityView)
         activityView.startAnimating()
     }
@@ -167,17 +167,13 @@ extension ITunesViewController {
     }
     
     @objc func selectSegmentedControl(_ sender: UISegmentedControl) {
-        //print("\(sender.selectedSegmentIndex)")
        
         switch sender.selectedSegmentIndex {
         case 0:
-            print("0")
              dashBoardViewModel.fetchRSS(FeedType.comingSoon.rawValue)
         case 1:
-            print("1")
              dashBoardViewModel.fetchRSS(FeedType.newReleases.rawValue)
         case 2:
-            print("2")
              dashBoardViewModel.fetchRSS(FeedType.topAlbums.rawValue)
         default:
             break
